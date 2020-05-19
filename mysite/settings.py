@@ -70,6 +70,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
