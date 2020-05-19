@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Издательства</title>
+
+
+  </head>
+  <body>
+
+<h1>Это список {{ title }}.</h1>
+
+
+<ul class="list-group">
+    {% for publisher in publishers %}
+        <li class="list-group-item">{{ publisher.company }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
