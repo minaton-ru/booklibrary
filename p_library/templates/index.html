@@ -2,6 +2,7 @@
 Тут собрано {{ books|length }} книг из моей личной коллекции.
 
 <table border="1">
+    <tr><td>N</td><td>Название</td><td>ISBN</td><td>Описание</td><td>Год</td><td>Автор</td><td>Издательство</td><td>Копии</td><td>Изменить копии</td></tr>
     {% for book in books %}
     <tr>
         <td>{{ forloop.counter }}</td>
@@ -10,7 +11,7 @@
         <td>{{ book.description }}</td>
         <td>{{ book.year_release }}</td>
         <td>{{ book.author.full_name }}</td>
-        <td>{{ book.author.country }}</td>
+        <td>{{ book.publisher.company }}</td>
         <td>{{ book.copy_count }}</td>
         <td>
             <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
@@ -24,6 +25,19 @@
                 <input type="submit" value="Уменьшить кол-во" />
             </form>
         </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>Кто вдохновил авторов</p>
+<table border="1">
+    <tr><td>N</td><td>Название</td><td>Автор</td><td>Кто вдохновил</td></tr>
+    {% for inspirer in inspirers %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ inspirer.book }}</td>
+        <td>{{ inspirer.author }}</td>
+        <td>{{ inspirer.inspirer }}</td>
     </tr>
     {% endfor %}
 </table>

@@ -4,7 +4,7 @@ from p_library.models import Publisher
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect
-from p_library.models import Author  
+from p_library.models import Author, Inspiration
 from p_library.forms import AuthorForm
 from p_library.forms import BookForm
 from django.views.generic import CreateView, ListView
@@ -22,9 +22,11 @@ def publisher_list(request):
 def index(request):
     template = loader.get_template('index.html')
     books = Book.objects.all()
+    inspirers = Inspiration.objects.all()
     biblio_data = {
         "title": "мою библиотеку",
         "books": books,
+        "inspirers": inspirers,
     }
     return HttpResponse(template.render(biblio_data, request))
 
