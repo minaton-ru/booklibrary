@@ -4,7 +4,7 @@ from p_library.models import Publisher
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect
-from p_library.models import Author, Inspiration
+from p_library.models import Author, Inspiration, Friend
 from p_library.forms import AuthorForm
 from p_library.forms import BookForm
 from django.views.generic import CreateView, ListView

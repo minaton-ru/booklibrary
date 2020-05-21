@@ -7,6 +7,12 @@ class Author(models.Model):
     def __str__(self):
         return self.full_name
 
+class Friend(models.Model):  
+    full_name = models.TextField()  
+    email = models.EmailField()
+    def __str__(self):
+        return self.full_name
+
 class Publisher(models.Model):  
     company = models.CharField(max_length=128)  
     def __str__(self):
@@ -21,6 +27,7 @@ class Book(models.Model):
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE, null=True, blank=True, related_name='books')
     copy_count = models.SmallIntegerField(default=1)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    friend = models.ForeignKey('Friend', on_delete=models.DO_NOTHING, null=True) 
     authors = models.ManyToManyField(
         'Author',
         through='Inspiration',

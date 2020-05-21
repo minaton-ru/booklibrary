@@ -2,7 +2,7 @@
 Тут собрано {{ books|length }} книг из моей личной коллекции.
 
 <table border="1">
-    <tr><td>N</td><td>Название</td><td>ISBN</td><td>Описание</td><td>Год</td><td>Автор</td><td>Издательство</td><td>Копии</td><td>Изменить копии</td></tr>
+    <tr><td>N</td><td>Название</td><td>ISBN</td><td>Описание</td><td>Год</td><td>Автор</td><td>Издательство</td><td>Кто взял книгу</td><td>Копии</td><td>Изменить копии</td></tr>
     {% for book in books %}
     <tr>
         <td>{{ forloop.counter }}</td>
@@ -12,6 +12,7 @@
         <td>{{ book.year_release }}</td>
         <td>{{ book.author.full_name }}</td>
         <td>{{ book.publisher.company }}</td>
+        <td>{{ book.friend.full_name }}</td>
         <td>{{ book.copy_count }}</td>
         <td>
             <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
