@@ -1,10 +1,6 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
- <meta charset="UTF-8">  
- <title>Create multiple Authors and Books</title>  
-</head>  
-<body>  
+{% extends 'base.html' %}
+{% block title %}Форма создания нескольких книг и нескольких авторов{% endblock %}
+{% block content %}    
 <form method="post">  
   {% csrf_token %}  
   {% for form in author_formset %}  
@@ -18,5 +14,4 @@
   {% endfor %}  
     <input type="submit" value="Сохранить"/>  
 </form>  
-</body>  
-</html>
+{% endblock %}

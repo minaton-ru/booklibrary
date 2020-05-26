@@ -1,5 +1,8 @@
-Добро пожаловать в {{ title }}. <br>
-Тут собрано {{ books|length }} книг из моей личной коллекции.
+{% extends 'base.html' %}
+{% block title %}Библиотека - главная страница{% endblock %}
+{% block content %}
+<p>Добро пожаловать в {{ title }}. <br></p>
+<p>Тут собрано {{ books|length }} книг из моей личной коллекции.</p>
 
 <table border="1">
     <tr><td>N</td><td>Название</td><td>ISBN</td><td>Описание</td><td>Год</td><td>Автор</td><td>Издательство</td><td>Кто взял книгу</td><td>Копии</td><td>Изменить копии</td></tr>
@@ -42,3 +45,4 @@
     </tr>
     {% endfor %}
 </table>
+{% endblock %}

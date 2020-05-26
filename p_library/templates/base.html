@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+
+<a href="../">Главная</a>
+<a href="../authors/">Список авторов</a>
+<a href="../author/create/">Добавить автора</a>
+<a href="../author/create_many/">Добавить несколько авторов</a>
+<a href="../author_book/create_many/">Добавить два автора и две книги</a>
+<a href="../publisher/">Издательства</a>
+<a href="../admin/">Админка</a>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
