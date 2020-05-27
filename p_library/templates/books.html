@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Список книг{% endblock %}
+{% block content %}
+<h1>Список книг</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr><th scope="col">N</td><th scope="col">Обложка</td><th scope="col">Название</td><th scope="col">ISBN</td><th scope="col">Описание</td><th scope="col">Год</td><th scope="col">Автор</td><th scope="col">Издательство</td><th scope="col">Кто взял книгу</td><th scope="col">Копии</td><th scope="col">Изменить копии</td></tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{% if book.bookcover %}
+            <img src="{{ book.bookcover.url }}" height="80px">
+            {% else %}
+            <p></p>
+            {% endif %}
+        </td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.ISBN }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.year_release }}</td>
+        <td>{{ book.author.full_name }}</td>
+        <td>{{ book.publisher.company }}</td>
+        <td>{{ book.friend.full_name }}</td>
+        <td>{{ book.copy_count }}</td>
+        <td>
+            <form action="/books/book_increment/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{book.id}}" />
+                <input type="submit" value="Увеличить кол-во" />
+            </form>
+            <form action="/books/book_decrement/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{book.id}}" />
+                <input type="submit" value="Уменьшить кол-во" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

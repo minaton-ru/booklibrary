@@ -8,15 +8,23 @@
 </head>
 <body>
 
-
-<a href="../">Главная</a>
-<a href="../authors/">Список авторов</a>
-<a href="../author/create/">Добавить автора</a>
-<a href="../author/create_many/">Добавить несколько авторов</a>
-<a href="../author_book/create_many/">Добавить два автора и две книги</a>
-<a href="../publisher/">Издательства</a>
-<a href="../admin/">Админка</a>
-
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="../">Моя библиотека</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="../books/">Список книг</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../authors/">Список авторов</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../author/create/">Добавить автора</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../author/create_many/">Добавить несколько авторов</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../author_book/create_many/">Добавить два автора и две книги</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../publisher/">Издательства</a></li>
+            <li class="nav-item"></li><a class="nav-link" href="../admin/">Админка</a></li>
+        </ul>
+    </div>
+</nav>
 {% block content %}
 {% endblock %}
 

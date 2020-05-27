@@ -4,37 +4,29 @@
 <p>Добро пожаловать в {{ title }}. <br></p>
 <p>Тут собрано {{ books|length }} книг из моей личной коллекции.</p>
 
-<table border="1">
-    <tr><td>N</td><td>Название</td><td>ISBN</td><td>Описание</td><td>Год</td><td>Автор</td><td>Издательство</td><td>Кто взял книгу</td><td>Копии</td><td>Изменить копии</td></tr>
-    {% for book in books %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ book.title }}</td>
-        <td>{{ book.ISBN }}</td>
-        <td>{{ book.description }}</td>
-        <td>{{ book.year_release }}</td>
-        <td>{{ book.author.full_name }}</td>
-        <td>{{ book.publisher.company }}</td>
-        <td>{{ book.friend.full_name }}</td>
-        <td>{{ book.copy_count }}</td>
-        <td>
-            <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{book.id}}" />
-                <input type="submit" value="Увеличить кол-во" />
-            </form>
-            <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{book.id}}" />
-                <input type="submit" value="Уменьшить кол-во" />
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
+    <div class="card-deck">
+        {% for book in books %}
+        <div class="col">
+            <div class="card" style="width: 12rem;">
+                {% if book.bookcover %}
+                <img src="{{ book.bookcover.url }}" class="card-img-top">
+                {% else %}
+                <img src="/media/images/default-300x300.jpg" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text">{{ book.author.full_name }}</p>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>  
+</div>
+
 
 <p>Кто вдохновил авторов</p>
-<table border="1">
+<table class="table table-striped">
     <tr><td>N</td><td>Название</td><td>Автор</td><td>Кто вдохновил</td></tr>
     {% for inspirer in inspirers %}
     <tr>
