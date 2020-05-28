@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Библиотека - главная страница{% endblock %}
 {% block content %}
-<p>Добро пожаловать в {{ title }}. <br></p>
+<h4>Добро пожаловать в {{ title }}.</h4>
 <p>Тут собрано {{ books|length }} книг из моей личной коллекции.</p>
 
 <div class="container">
-    <div class="card-deck">
+    <div class="row">
         {% for book in books %}
         <div class="col">
-            <div class="card" style="width: 12rem;">
+            <div class="card" style="width: 15rem;">
                 {% if book.bookcover %}
                 <img src="{{ book.bookcover.url }}" class="card-img-top">
                 {% else %}
@@ -25,7 +25,7 @@
 </div>
 
 
-<p>Кто вдохновил авторов</p>
+<h4>Кто вдохновил авторов</h4>
 <table class="table table-striped">
     <tr><td>N</td><td>Название</td><td>Автор</td><td>Кто вдохновил</td></tr>
     {% for inspirer in inspirers %}

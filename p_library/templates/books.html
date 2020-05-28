@@ -12,9 +12,9 @@
     <tr>
         <td>{{ forloop.counter }}</td>
         <td>{% if book.bookcover %}
-            <img src="{{ book.bookcover.url }}" height="80px">
+            <img src="{{ book.bookcover.url }}" width="50px">
             {% else %}
-            <p></p>
+            <img src="/media/images/default-300x300.jpg" width="50px">
             {% endif %}
         </td>
         <td>{{ book.title }}</td>
