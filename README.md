@@ -1,18 +1,18 @@
-## Веб-приложение библиотеки книг 
+## Веб-приложение библиотеки книг  
 
-Python, Django, sqlite. 
+Python, Django, sqlite.  
 
-Проект сделан без виртуального окружение, поэтому просто скачивайте файлы и запускайте 
-'python manage.py runserver' 
+Проект сделан без виртуального окружение, поэтому просто скачивайте файлы и запускайте  
+`python manage.py runserver`  
 
-Сервер запускается на http://127.0.0.1:8000/ 
+Сервер запускается на http://127.0.0.1:8000/  
 
-Если без файла базы данных db.sqlite3, то сначала нужно сделать миграции и загрузить xml: 
-'python manage.py makemigrations' 
-'python manage.py migrate' 
-'python manage.py loaddata data.xml' 
+Если без файла базы данных db.sqlite3, то сначала нужно сделать миграции и загрузить xml:  
+`python manage.py makemigrations`  
+`python manage.py migrate`  
+`python manage.py loaddata data.xml`  
 
-Используемые библиотеки: django, psycopg2, dj_database_url, Pillow. 
+Используемые библиотеки: django, psycopg2, dj_database_url, Pillow.  
 
 Функционал: 
 - база данных книг с картинкой обложки 
