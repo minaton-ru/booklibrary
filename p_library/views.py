@@ -9,7 +9,9 @@ from p_library.forms import AuthorForm
 from p_library.forms import BookForm
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
-from django.forms import formset_factory  
+from django.forms import formset_factory
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth  
 from django.http.response import HttpResponseRedirect
 
 def books_list(request):
@@ -33,6 +35,8 @@ def index(request):
         "books": books,
         "inspirers": inspirers,
     }
+    if request.user.is_authenticated:  
+        biblio_data['username'] = request.user.username 
     return HttpResponse(template.render(biblio_data, request))
 
 def publishers(request):
@@ -123,3 +127,18 @@ def books_authors_create_many(request):
 			'book_formset': book_formset,  
 		}  
 	)
+
+def login(request):  
+    if request.method == 'POST':  
+        form = AuthenticationForm(request=request, data=request.POST)  
+        if form.is_valid():  
+            auth.login(request, form.get_user())  
+            return HttpResponseRedirect(reverse_lazy('p_library:index'))  
+    else:  
+        context = {'form': AuthenticationForm()}  
+        return render(request, 'login.html', context)  
+  
+  
+def logout(request):  
+    auth.logout(request)  
+    return HttpResponseRedirect(reverse_lazy('p_library:index'))

@@ -5,10 +5,10 @@
 <p>Тут собрано {{ books|length }} книг из моей личной коллекции.</p>
 
 <div class="container">
-    <div class="row">
+    <div class="row row-cols-4">
         {% for book in books %}
         <div class="col">
-            <div class="card" style="width: 15rem;">
+            <div class="card border-secondary">
                 {% if book.bookcover %}
                 <img src="{{ book.bookcover.url }}" class="card-img-top">
                 {% else %}
